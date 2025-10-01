@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viimun 正規授權經銷商｜官方網站</title>
+  <meta name="description" content="Viimun 正規授權經銷商官方網站｜正品保證、快速出貨、在地客服。提供產品資訊、聯絡洽談訂購、合作洽詢。">
+  <meta name="theme-color" content="#0f4336">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root{
+      --bg:#f6f8f7;
+      --surface:#ffffff;
+      --ink:#18302a;
+      --muted:#5f716a;
+      --brand:#1b6b57;
+      --brand-2:#a9d5c7;
+      --accent:#e9b66b;
+      --line:#e6ece9;
+      --radius:16px;
+      --shadow:0 6px 20px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans";}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1160px;margin:auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+    .nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+    .menu a{padding:0.6rem 1rem;border-radius:999px}
+    .menu a:hover{background:var(--line)}
+    .hero{padding:60px 0;background:linear-gradient(180deg,#e6f2ed,#f6f8f7)}
+    .hero h1{font-size:2.4rem;margin-bottom:0.6rem}
+    .hero p{color:var(--muted);font-size:1.1rem;margin-bottom:1rem}
+    .btn{display:inline-block;padding:0.9rem 1.2rem;border:none;border-radius:999px;background:var(--brand);color:#fff;font-weight:600;cursor:pointer}
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:14px 0;margin-bottom:40px}
+    .trust-wrap{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;font-weight:600;color:var(--muted)}
+    section{padding:40px 0}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+    .about p{line-height:1.6}
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .post{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .post .content{padding:14px}
+    .cta{background:linear-gradient(180deg,#0f4336,#175946);color:#fff;border-radius:var(--radius);padding:24px;text-align:center}
+    details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+    summary{cursor:pointer;font-weight:700}
+    footer{background:#0f4336;color:#dbe8e3;padding:24px 0}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+    .legal{border-top:1px solid rgba(255,255,255,.1);margin-top:16px;padding-top:10px;color:#c7d7d1;text-align:center}
+    .line-section{text-align:center;background:#fff;padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .line-section img{max-width:200px;margin:20px auto;border-radius:20px;box-shadow:var(--shadow)}
+    .line-section a.btn{background:#06C755;color:#fff;font-size:1.2rem}
+    /* 浮動LINE按鈕 */
+    .line-float{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:99;
+      background:#06C755;
+      color:#fff;
+      border-radius:50%;
+      width:64px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.2);
+      cursor:pointer;
+      transition:transform .2s;
+      animation:breathe 2.8s ease-in-out infinite;
+    }
+    .line-float:hover{transform:scale(1.05);animation-play-state:paused}
+    .line-float img{width:36px;height:36px}
+    @keyframes breathe{
+      0%{transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,.20)}
+      50%{transform:scale(1.08); box-shadow:0 10px 22px rgba(0,0,0,.26)}
+      100%{transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,.20)}
+    }
+    @media (prefers-reduced-motion: reduce){.line-float{animation:none}}
+    .copy-id{
+      display:inline-block;
+      background:var(--accent);
+      color:#000;
+      padding:0.6rem 1rem;
+      border-radius:999px;
+      margin-top:10px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .copy-id:hover{background:#f0a948}
+    /* 📞 行動版一鍵撥打按鈕 */
+    .call-float{
+      display:none;
+      position:fixed;
+      right:20px;            /* 👉 改到右側 */
+      bottom:96px;           /* 👉 疊在 LINE 按鈕上方（LINE 是 bottom:20px）*/
+      z-index:98;
+      background:#C7B9FF;    /* 薰衣草紫 */
+      color:#2b1a57;         /* 深紫文字/圖示，對比更好 */
+      border-radius:50%;
+      width:64px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.2);
+      text-decoration:none;
+      font-size:2rem;
+    }
+    @media(max-width:768px){.call-float{display:flex}}
+    @media(max-width:768px){.call-float{display:flex}}
+    @media(max-width:768px){.call-float{display:flex}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo"><strong>Viimun 授權經銷商</strong></div>
+    <nav class="menu">
+      <a href="#about">關於我們</a>
+      <a href="#news">最新消息</a>
+      <a href="#partner">合作洽詢</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Viimun 正規授權經銷商</h1>
+    <p>正品保證、快速出貨、在地客服。提供產品資訊與合作洽詢，歡迎直接私訊與我們聯絡訂購。</p>
+    <a href="#line" class="btn">加入 LINE 官方帳號</a>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="container trust-wrap">
+    <div>✅ 正規授權</div>
+    <div>🚚 48 小時出貨</div>
+    <div>🧾 發票開立</div>
+    <div>💬 私訊洽談</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container about">
+    <div>
+      <h2>關於我們</h2>
+      <p>我們為 Viimun 在台正規授權經銷商，致力於將品牌「自然、科學、透明」的理念帶入日常生活。提供產品諮詢、客製化採購與售後服務，讓您安心選購每一件商品。</p>
+      <ul>
+        <li>授權編號：VM-TAIWAN-0001</li>
+        <li>客服時間：週一至週五 10:00–18:00</li>
+        <li>服務據點：台北／新北／花蓮</li>
+      </ul>
+    </div>
+    <div>
+      <img src="https://picsum.photos/900/600?random=22" alt="品牌示意圖">
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <h2>最新消息</h2>
+    <div class="posts">
+      <article class="post">
+        <div class="content">
+          <h3>10/15 新品預購開跑</h3>
+          <p>新品組合即將上市，歡迎私訊洽詢預購優惠。</p>
+        </div>
+      </article>
+      <article class="post">
+        <div class="content">
+          <h3>門市快閃體驗日</h3>
+          <p>10/20（六）現場體驗活動，來店禮限量發放。</p>
+        </div>
+      </article>
+      <article class="post">
+        <div class="content">
+          <h3>企業團購方案</h3>
+          <p>提供企業/團體客製化採購與發票分離開立，歡迎洽談合作。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINE 官方帳號 ===== -->
+<section id="line" class="line-section">
+  <div class="container">
+    <h2>📱 加入 LINE 官方帳號</h2>
+    <p>透過 LINE 與我們聯絡，立即獲得最新產品資訊、專屬優惠與客服支援。</p>
+    <img src="/assets/line-qr-placeholder.png" alt="LINE 官方帳號 QR Code">
+    <p>掃描上方 QR Code，或點擊下方按鈕立即加入好友 👇</p>
+    <a href="https://line.me/R/ti/p/@yourid" class="btn">加入好友</a>
+    <div class="copy-id" onclick="copyLineId()">📋 一鍵複製 LINE ID：@yourid</div>
+  </div>
+</section>
+
+<section id="partner">
+  <div class="container">
+    <div class="cta">
+      <h2>成為合作夥伴</h2>
+      <p>填寫表單或直接私訊，我們將於 2 個工作日內與您聯繫。</p>
+      <a href="#contact" class="btn">聯絡洽談</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>常見問題</h2>
+    <details>
+      <summary>如何聯絡訂購？</summary>
+      <p>可透過官方 LINE 或 Email 聯絡我們，專人將協助報價與訂購流程。</p>
+    </details>
+    <details>
+      <summary>可否開立發票？</summary>
+      <p>所有訂單皆可開立統一發票，並提供批發、企業報帳服務。</p>
+    </details>
+    <details>
+      <summary>出貨時程？</summary>
+      <p>工作日 48 小時內出貨，亦可預約指定到貨時間。</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>聯絡我們</h2>
+    <p>有任何訂購或合作需求，歡迎私訊洽談。</p>
+    <ul>
+      <li>Email：<a href="mailto:service@example.com">service@example.com</a></li>
+      <li>電話：<a href="tel:0200000000">02-0000-0000</a>（週一至週五 10:00–18:00）</li>
+      <li>地址：台北市信義區示意路 100 號</li>
+    </ul>
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://line.me/R/ti/p/@yourid" class="btn">LINE 私訊</a>
+      <a href="#" class="btn" style="background:var(--accent);color:#000">Messenger</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h3>Viimun 授權經銷商</h3>
+      <p>正品保證｜快速出貨｜私訊洽談</p>
+    </div>
+    <div>
+      <h4>資訊</h4>
+      <ul>
+        <li><a href="#about">關於我們</a></li>
+        <li><a href="#news">最新消息</a></li>
+        <li><a href="#partner">合作洽詢</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>客服</h4>
+      <ul>
+        <li><a href="#contact">聯絡我們</a></li>
+        <li><a href="#">隱私政策</a></li>
+        <li><a href="#">服務條款</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">© <span id="y"></span> Viimun 正規授權經銷商</div>
+</footer>
+
+<!-- 浮動LINE按鈕 -->
+<a href="https://line.me/R/ti/p/@yourid" class="line-float" aria-label="加入 LINE 官方帳號">
+  <img src="/assets/line-icon.svg" alt="LINE">
+</a>
+
+<!-- 📞 行動版一鍵撥打電話（右下、位於 LINE 上方） -->
+<a href="tel:0200000000" class="call-float" aria-label="一鍵撥打客服">📞</a>
+
+<script>
+  document.getElementById('y').textContent=new Date().getFullYear();
+  function copyLineId(){
+    navigator.clipboard.writeText('@yourid').then(()=>{
+      alert('已複製 LINE ID：@yourid');
+    });
+  }
+</script>
+</body>
+</html>
