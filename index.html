@@ -110,6 +110,77 @@
     @media(max-width:768px){.call-float{display:flex}}
     @media(max-width:768px){.call-float{display:flex}}
     @media(max-width:768px){.call-float{display:flex}}
+    /* ✅ RWD 響應式調整 */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .about { grid-template-columns: 1fr; text-align: center; }
+      .about img { max-width: 80%; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      /* 導覽列 */
+      .nav { flex-direction: column; height: auto; padding: 10px 0; }
+      .menu { display: flex; flex-direction: column; align-items: center; }
+      .menu a { padding: 0.6rem 0; display: block; width: 100%; text-align: center; }
+
+      /* Hero 區塊 */
+      .hero { padding: 40px 0; text-align: center; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+
+      /* 信任標語 */
+      .trust-wrap { grid-template-columns: repeat(2, 1fr); row-gap: 10px; }
+
+      /* About 區塊 */
+      .about { grid-template-columns: 1fr; text-align: left; }
+      .about img { max-width: 100%; }
+
+      /* 文章區塊 */
+      .posts { grid-template-columns: 1fr 1fr; }
+
+      /* CTA */
+      .cta h2 { font-size: 1.6rem; }
+      .cta p { font-size: 1rem; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      /* 主要字體縮小 */
+      body { font-size: 16px; }
+
+      /* Hero */
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 0.95rem; }
+
+      /* 信任標語 */
+      .trust-wrap { grid-template-columns: 1fr; }
+
+      /* 文章區塊 */
+      .posts { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-grid h3, .footer-grid h4 { margin-top: 20px; }
+
+      /* LINE QR 區塊 */
+      .line-section img { max-width: 150px; }
+      .line-section .btn { font-size: 1rem; padding: 0.8rem 1.1rem; }
+
+      /* CTA */
+      .cta { padding: 20px; }
+      .cta h2 { font-size: 1.4rem; }
+
+      /* 按鈕 */
+      .btn { font-size: 1rem; padding: 0.8rem 1.1rem; }
+
+      /* 浮動按鈕調整位置避免重疊 */
+      .line-float, .call-float { width: 56px; height: 56px; }
+      .line-float img { width: 30px; height: 30px; }
+    }
   </style>
 </head>
 <body>
@@ -118,7 +189,6 @@
     <div class="logo"><strong>Viimun 授權經銷商</strong></div>
     <nav class="menu">
       <a href="#about">關於我們</a>
-      <a href="#news">最新消息</a>
       <a href="#partner">合作洽詢</a>
       <a href="#contact">聯絡我們</a>
     </nav>
@@ -146,8 +216,9 @@
   <div class="container about">
     <div>
       <h2>關於我們</h2>
-      <p>我們為 Viimun 在台正規授權經銷商，致力於將品牌「自然、科學、透明」的理念帶入日常生活。提供產品諮詢、客製化採購與售後服務，讓您安心選購每一件商品。</p>
+      <p>我們為 Viimun 在花蓮地區授權經銷商，致力於將品牌「自然、方便、簡單」的理念帶入日常生活。提供產品諮詢、客製化採購與售後服務，讓您安心選購每一件商品。</p>
       <ul>
+<!--        TODO 授權編號-->
         <li>授權編號：VM-TAIWAN-0001</li>
         <li>客服時間：週一至週五 10:00–18:00</li>
         <li>服務據點：台北／新北／花蓮</li>
@@ -155,32 +226,6 @@
     </div>
     <div>
       <img src="https://picsum.photos/900/600?random=22" alt="品牌示意圖">
-    </div>
-  </div>
-</section>
-
-<section id="news">
-  <div class="container">
-    <h2>最新消息</h2>
-    <div class="posts">
-      <article class="post">
-        <div class="content">
-          <h3>10/15 新品預購開跑</h3>
-          <p>新品組合即將上市，歡迎私訊洽詢預購優惠。</p>
-        </div>
-      </article>
-      <article class="post">
-        <div class="content">
-          <h3>門市快閃體驗日</h3>
-          <p>10/20（六）現場體驗活動，來店禮限量發放。</p>
-        </div>
-      </article>
-      <article class="post">
-        <div class="content">
-          <h3>企業團購方案</h3>
-          <p>提供企業/團體客製化採購與發票分離開立，歡迎洽談合作。</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -251,7 +296,6 @@
       <h4>資訊</h4>
       <ul>
         <li><a href="#about">關於我們</a></li>
-        <li><a href="#news">最新消息</a></li>
         <li><a href="#partner">合作洽詢</a></li>
       </ul>
     </div>
