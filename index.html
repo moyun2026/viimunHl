@@ -146,6 +146,38 @@
       text-decoration:none;font-size:2rem;
     }
 
+    /* ✅ Modal (Privacy / Terms) */
+    .modal-overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,.5);
+      display:none; align-items:center; justify-content:center;
+      z-index:200;
+    }
+    .modal-overlay.show{display:flex}
+    .modal{
+      width:min(720px,92vw);
+      max-height:86vh;
+      overflow:auto;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px 18px 18px;
+    }
+    .modal-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+    .modal-header h3{margin:0;font-size:1.25rem}
+    .modal-body{color:var(--ink);line-height:1.7}
+    .modal-body p{margin:10px 0}
+    .modal-close{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      width:36px;height:36px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+    }
+    .footer-grid a.linklike{ text-decoration:none; }
+    .footer-grid a.linklike:hover{ text-decoration:none; }
+
     /* ✅ RWD 響應式調整 */
     @media (max-width: 1200px) {
       .container{max-width:1000px}
@@ -210,6 +242,10 @@
       /* 浮動按鈕縮小避免擋住內容 */
       .line-float, .call-float { width: 56px; height: 56px; }
       .line-float img { width: 30px; height: 30px; }
+
+      /* Modal RWD */
+      .modal{width:94vw;padding:14px}
+      .modal-header h3{font-size:1.1rem}
     }
   </style>
 </head>
@@ -333,6 +369,49 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== Modals: Privacy / Terms ===== -->
+  <div class="modal-overlay" id="privacy-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <div class="modal" role="document">
+      <div class="modal-header">
+        <h3 id="privacy-title">隱私政策</h3>
+        <button class="modal-close" aria-label="關閉">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>我們重視您的隱私。本網站僅蒐集提供服務所需之最少資料，並以合理方式使用與保存。</p>
+        <ul>
+          <li><strong>資料類型：</strong>聯絡表單/私訊提供之姓名、聯絡方式與需求內容。</li>
+          <li><strong>使用目的：</strong>回覆詢問、提供報價與售後服務。</li>
+          <li><strong>保存期間：</strong>達成目的後即刪除或以不可識別方式保存最長 2 年。</li>
+          <li><strong>第三方分享：</strong>除法令要求或完成交易所必須（如物流/開立發票）外，不對外提供。</li>
+          <li><strong>您的權利：</strong>得隨時請求查詢、更正、刪除或停止使用您的個人資料。</li>
+          <li><strong>聯絡方式：</strong>請以頁面「聯絡我們」之 Email/LINE 與我們聯繫。</li>
+        </ul>
+        <p style="color:var(--muted)">最後更新：<span id="pp-last-updated"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="terms-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+    <div class="modal" role="document">
+      <div class="modal-header">
+        <h3 id="terms-title">服務條款</h3>
+        <button class="modal-close" aria-label="關閉">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>歡迎使用本網站。使用本服務即表示您同意以下條款：</p>
+        <ul>
+          <li><strong>訂購與價格：</strong>以我們最終報價與雙方確認之訂單為準。</li>
+          <li><strong>出貨與退換：</strong>一般於工作日 48 小時內出貨；商品須保持完整方可辦理退換（依法令規定者除外）。</li>
+          <li><strong>使用限制：</strong>不得以任何方式干擾網站運作或從事違法行為。</li>
+          <li><strong>智慧財產權：</strong>網站內容（文字/圖片/標誌）之權利歸本公司或權利人所有，未經授權不得使用。</li>
+          <li><strong>責任限制：</strong>於法令允許範圍內，對於間接或衍生之損害不負賠償責任。</li>
+          <li><strong>條款修改：</strong>我們得依需要調整條款並於網站公告後生效。</li>
+        </ul>
+        <p style="color:var(--muted)">最後更新：<span id="tos-last-updated"></span></p>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer>
@@ -352,8 +431,8 @@
       <h4>客服</h4>
       <ul>
         <li><a href="#contact" style="color: white">聯絡我們</a></li>
-        <li><a href="#" style="color: white">隱私政策</a></li>
-        <li><a href="#" style="color: white">服務條款</a></li>
+        <li><a href="#" class="open-modal linklike" data-modal="privacy" style="color: white">隱私政策</a></li>
+        <li><a href="#" class="open-modal linklike" data-modal="terms" style="color: white">服務條款</a></li>
       </ul>
     </div>
   </div>
@@ -385,6 +464,70 @@
     ta.select(); document.execCommand('copy'); ta.remove();
     alert('已複製 LINE ID：@564agpqe');
   }
+
+  // ===== Privacy / Terms modals =====
+  (function(){
+    const openers = document.querySelectorAll('.open-modal');
+    const privacy = document.getElementById('privacy-modal');
+    const terms   = document.getElementById('terms-modal');
+    const modals = { privacy, terms };
+    let lastFocus = null;
+
+    function openModal(which){
+      const overlay = modals[which];
+      if(!overlay) return;
+      lastFocus = document.activeElement;
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      const closeBtn = overlay.querySelector('.modal-close');
+      closeBtn && closeBtn.focus();
+    }
+    function closeModal(overlay){
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      if(lastFocus) { try{ lastFocus.focus(); }catch(e){} }
+    }
+
+    openers.forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const which = a.getAttribute('data-modal');
+        openModal(which);
+      });
+    });
+
+    // close by clicking overlay or close button
+    [privacy,terms].forEach(ov=>{
+      if(!ov) return;
+      ov.addEventListener('click', (e)=>{
+        if(e.target === ov) closeModal(ov);
+      });
+      const closeBtn = ov.querySelector('.modal-close');
+      closeBtn && closeBtn.addEventListener('click', ()=>closeModal(ov));
+    });
+
+    // ESC to close
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        [privacy,terms].forEach(ov=>{
+          if(ov && ov.classList.contains('show')) closeModal(ov);
+        });
+      }
+    });
+
+    // Fill last updated dates
+    const today = new Date();
+    const y = today.getFullYear();
+    const m = String(today.getMonth()+1).padStart(2,'0');
+    const d = String(today.getDate()).padStart(2,'0');
+    const dateStr = `${y}-${m}-${d}`;
+    const ppDate = document.getElementById('pp-last-updated');
+    const tosDate = document.getElementById('tos-last-updated');
+    if(ppDate) ppDate.textContent = dateStr;
+    if(tosDate) tosDate.textContent = dateStr;
+  })();
 
   // Drawer (mobile nav)
   const openBtn = document.getElementById('open-drawer');
