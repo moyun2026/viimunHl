@@ -236,6 +236,16 @@
       .cta h2 { font-size: 1.4rem; }
 
       .btn { font-size: 1rem; padding: 0.8rem 1.1rem; }
+
+      /* 信任標語改單欄避免擠壓 */
+      .trust-wrap{grid-template-columns:1fr;row-gap:8px}
+
+      /* iOS 安全區 + 浮動鈕避免蓋住內容 */
+      .line-float{bottom: max(16px, env(safe-area-inset-bottom) + 12px)}
+      .call-float{bottom: calc(max(16px, env(safe-area-inset-bottom) + 12px) + 68px)}
+
+      /* 頁尾增高，避免被浮動鈕遮住 */
+      footer{padding-bottom: calc(24px + 72px)}
       .section-box{padding:16px}
       .line-section a.btn,.line-section .copy-id{font-size:1rem;padding:0.8rem 1.1rem}
 
